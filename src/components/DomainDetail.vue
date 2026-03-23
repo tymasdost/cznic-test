@@ -21,11 +21,15 @@ const verbose = ref(false)
 <template>
   <div class="domain-detail">
     <h1 class="domain-name">{{ domain.fqdn }}</h1>
-    <label class="verbose-toggle">
-      <input type="checkbox" v-model="verbose" class="toggle-input" />
+    <button
+      class="verbose-toggle"
+      role="switch"
+      :aria-checked="verbose"
+      @click="verbose = !verbose"
+    >
       <span class="toggle-switch" :class="{ active: verbose }"></span>
       <span class="toggle-label">Verbose view</span>
-    </label>
+    </button>
 
     <div class="columns">
       <div class="column-left">
@@ -61,10 +65,9 @@ const verbose = ref(false)
   cursor: pointer;
   margin-bottom: 20px;
   user-select: none;
-}
-
-.toggle-input {
-  display: none;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .toggle-switch {
